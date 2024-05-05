@@ -13,6 +13,9 @@ function TuringMachine(transition, startState, tape) {
   this.transition = transition;
   this.state = startState;
   this.tape = tape;
+
+  this.operationsExecuted = 0;
+  document.getElementById('instructions_executed').innerHTML = this.operationsExecuted;
 }
 
 TuringMachine.prototype.toString = function () {
@@ -31,6 +34,9 @@ TuringMachine.prototype.step = function () {
   this.tape.write(instruct.symbol);
   move(this.tape, instruct.move);
   this.state = instruct.state;
+
+  this.operationsExecuted++;
+  document.getElementById('instructions_executed').innerHTML = this.operationsExecuted;
 
   return true;
 };
